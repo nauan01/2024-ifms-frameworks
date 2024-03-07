@@ -1,0 +1,16 @@
+{
+  "name": "frameworks1-2024",
+  "version": "1.0.0",
+  "description": "Disciplina de Frameworks turma 20241096205C",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marcelo Tomporoski Perez",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  }
+}
