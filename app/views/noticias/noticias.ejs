@@ -1,35 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <h1>Notícias</h1>
-    <table>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Portal de notícias</title>
+    </head>
+    <body>
+      <h1>Notícias</h1>
+      <table>
         <tr>
             <td>ID</td>
             <td>Título</td>
-            <td>Notícias</td>
+            <td>Contéudo</td>
+            <td>Data e Hora da Criação</td>
         </tr>
-        <% for (var i=0; i<noticias.length;i++){ %>
+        <% for (var i =0 ;i<noticias.length;i++) {%>
             <tr>
-                <td>
-                    <%=noticias[i].id_noticia %>
-                </td>
-                <td>
-                    <%=noticias[i].titulo %>
-                </td>
-                <td>
-                    <%=noticias[i].noticia %>
-                </td>
+                <td><%=noticias[i].idnoticia%></td>
+                <td><%=noticias[i].titulo%></td>
+                <td><%=noticias[i].noticia%></td>
+                <td><%=noticias[i].dhnoticia%></td>
             </tr>
-            <% } %>
-
-    </table>
-</body>
-
+        <% }%>
+      </table>
+    </body>
 </html>

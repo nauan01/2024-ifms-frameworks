@@ -1,0 +1,321 @@
+
+h1{
+    color:black;
+}
+img{
+    width: 50%;
+    height:10vh;
+    margin-left: 45vh ;
+   
+    
+
+}
+home{
+    align-items: center;
+}
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap");
+
+.filter {
+  position: fixed;
+  width: 300px;
+  aspect-ratio: 1;
+  user-select: none !important;
+  pointer-events: none;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  backdrop-filter: url(#pixelate);
+  box-shadow: 1px 1px 5px 2px rgb(0 0 0 / 0.1);
+}
+
+h1 {
+  filter: url(#pixelate);
+  margin: 0;
+  --fsize: clamp(2rem, 20vw, 20rem);
+  --shsize: calc(var(--fsize) * 0.025);
+  --stsize: calc(var(--fsize) * 0.015);
+  font-size: var(--fsize);
+  color: white;
+}
+
+html {
+  --surface: hsl(200 10% 10%);
+  --text: hsl(200 5% 80%);
+  --hero-h: calc(100vh - 40px);
+
+  background-color: var(--surface);
+  color: var(--text);
+  block-size: 100%;
+}
+
+body {
+  --background-color: #316760;
+  font-family: "Space Grotesk", sans-serif;
+  background: url(https://i.imgur.com/ZisYm5p.jpg) no-repeat center/cover;
+  min-block-size: 100%;
+  min-inline-size: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+  overflow-y: auto;
+
+  display: grid;
+  place-content: center;
+}
+
+.more-pens {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  gap: 1ch;
+  padding: 1ch;
+  max-height: 128px;
+  filter: drop-shadow(0 0 1rem #0008);
+  a {
+    display: flex;
+    justify-content: center;
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      transition: all ease-in-out 0.3s;
+    }
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+:root {
+	--w: #fafafa; 
+	--b: #141414; 
+	--s: 1s;
+	--d: calc(var(--s) / 6);
+}
+
+$d: var(--d);
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+input {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	z-index: 4;
+	opacity: 0;
+	cursor: pointer;
+	&:checked ~ div {
+		filter: invert(1);
+	}
+	&:checked + .bg:before {
+		content: "CLICK TO DARK";		
+	}
+}
+
+.bg:before {
+	content: "CLICK TO LIGHT";
+	position: absolute;
+	color: var(--w);
+	width: 100%;
+	text-align: center;
+	bottom: 10vh;
+	font-family: Arial, Helvetica, serif;
+	font-size: 12px;
+	text-shadow: 0 0 1px var(--w);
+	opacity: 0.25;
+}
+
+body, .dots {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.bg {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	background: var(--b);
+	z-index: -2;
+}
+
+.dots {
+	width: 50vmin;
+	height: 50vmin;
+	position: relative;
+}
+
+.ring {
+	border: 1.5vmin solid var(--w);
+	width: 64%;
+	height: 64%;
+	border-radius: 100%;
+	z-index: 0;
+	box-shadow: 0 0 0 1vmin var(--b), 0 0 0 1vmin var(--b) inset;
+}
+
+.dot {
+	width: 50%;
+	position: absolute;
+	height: 7vmin;
+	left: 0;
+	transform-origin: 100% 50%;
+	z-index: -1;
+	animation: 
+		over-ring calc(var(--s) * 2) linear 0s infinite, 
+		spin calc(var(--s) * 8) linear 0s infinite;
+	&:before {
+		content: "";
+		width: 5.5vmin;
+		height: 5.5vmin;
+		left: 0;
+		box-sizing: border-box;
+		border: 1vmin solid var(--b);
+		position: absolute;
+		background: var(--w);
+		border-radius: 100%;
+		animation: ball var(--s) ease-in-out 0s infinite alternate;
+	}
+	@for $i from 1 through 12 {	
+		&:nth-child(#{$i}) {
+			$n: (($i - 1) * -1);
+			$n4: ($n * 4);
+			animation-delay: calc(#{$d} * #{$n}), calc(#{$d} * #{$n4});
+			&:before {
+				animation-delay: calc(#{$d} * #{$n});
+			}
+		}
+	}
+}
+
+@keyframes spin {
+	100% { transform: rotate(-360deg); }	
+}
+
+@keyframes ball {
+	100% { left: 12vmin; width: 4vmin; height: 4vmin; }	
+}
+
+@keyframes over-ring {
+	0%, 50% { z-index: -1; }	
+	51%, 100% { z-index: 1; }	
+}
+
+
+
+
+
+
+
+
+
+
+
+.coffee-clock{
+	--width: 70vmin;
+	width: var(--width);
+	font-size: calc(var(--width) / 100);
+	aspect-ratio: 1;
+	display: grid;
+	place-items: center;
+	> * { grid-area: 1/1 }
+	> .plate {
+	  width: 100%;
+	  aspect-ratio: 1/1;
+	  border-radius: 50%;
+	  background-color: hsl(0 0% 95%);
+	  background-image: radial-gradient(hsl(0 0% 0% / .2), #0000);
+	  border: 1em solid hsl(0 0% 100% / .5);
+	  box-shadow: 3em 3em 4em hsl(0 0% 0% / .5);
+	  display: grid;
+	  &::before{
+		content: "";
+		grid-area: 1/1;
+		border-radius: 50%;
+		--w: calc(360deg / 60);
+		background-image: repeating-conic-gradient(from -15deg, 
+		  transparent 0 14deg, 
+		  hsl(0 0% 50%) 14.5deg 15.5deg, 
+		  transparent 16deg 30deg);
+		mask-image: radial-gradient(transparent 50%, black)
+	  }
+	}
+	> .cup {
+	  width: 55%;
+	  aspect-ratio: 1/1;
+	  border-radius: 50%;
+	  box-shadow: 2em 2em 4em hsl(0 0% 0% / .5)
+	}
+	> .handle{
+	  width: 8%;
+	  height: 75%;
+	  place-self: center;
+	  display: grid;
+	  filter: drop-shadow(1.5em 1.5em 2em hsl(0 0% 0% / .5));
+	  > div {
+		display: grid;
+		rotate: var(--angle-hour);
+		&::before{
+		  content: "";
+		  height: 50%;
+		  background-color: hsl(0 0% 90%);
+		  border-radius: 999vmax;
+		  box-shadow: inset 0 0 .25cqi hsl(0 0% 0% / .5);
+		}
+	  }
+	}
+	> .coffee{
+	  width: 55%;
+	  aspect-ratio: 1/1;
+	  border: 3em solid hsl(0 0% 90%);
+	  border-radius: 50%;
+	  background-color: hsl(15 25% 10%);
+	  background-image: radial-gradient(#0000, hsl(0 0% 0% / .5));
+	  z-index: 1;
+	}
+	
+	> .spoon{
+	  width: 5%;
+	  height: 100%;
+	  place-self: center;
+	  display: grid;
+	  filter: drop-shadow(1.5em 1.5em 2em hsl(0 0% 0% / .5));
+	  z-index: 1;
+	  > div {
+		display: grid;
+		perspective: 100em;
+		transform-origin: preserve-3d;
+		rotate: var(--angle-minute);
+		&::before{
+		  content: "";
+		  height: 45%;
+		  
+		  background: 
+			linear-gradient(90deg, hsl(0 0% 0% / .1), #0000, hsl(0 0% 0% / .1)),
+			linear-gradient(hsl(0 0% 80%) 95%, #0000);
+		  border-radius: 999vmax 999vmax 0 0;
+		  box-shadow: inset 0 0 .25cqi hsl(0 0% 0% / .25);
+		  transform: rotateX(-60deg);
+		  
+		}
+	  }
+	}
+  
+  }
+  
+  * { box-sizing: border-box }
+  html, body { height: 100% }
+  body { margin: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: brown; text-align: center }
+  h1 { font-family: system-ui, sans-serif; color: white; text-shadow: 2px 2px 4px black; font-size: 7vmin}
